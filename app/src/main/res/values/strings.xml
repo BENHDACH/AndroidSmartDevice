@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">AndroidSmartDevice</string>
+    <string name="TitleMain">Android Smart Device BLE</string>
+    <string name="Description">L\'Application vous connectera aux appareils en bluetooth en les scannant, elle vous permettra aussi d\'allumer dans un device les leds aux choix ! —BENHDACH Mohamed</string>
+    <string name="ButtonMScan">Scan !</string>
+    <string name="TitleScan"> Liste des appareils accessibles</string>
+    <string name="ButtonScanOn"> Lancer le scan </string>
+    <string name="ButtonScanOff"> Arreter le scan </string>
+
+</resources>
