@@ -1,10 +1,23 @@
 <resources>
     <string name="app_name">AndroidSmartDevice</string>
+    <string name="app_creator"> BENHDACH Mohamed - ISEN M1 Biomed  </string>
     <string name="TitleMain">Android Smart Device BLE</string>
-    <string name="Description">L\'Application vous connectera aux appareils en bluetooth en les scannant, elle vous permettra aussi d\'allumer dans un device les leds aux choix ! —BENHDACH Mohamed</string>
     <string name="ButtonMScan">Scan !</string>
     <string name="TitleScan"> Liste des appareils accessibles</string>
     <string name="ButtonScanOn"> Lancer le scan </string>
     <string name="ButtonScanOff"> Arreter le scan </string>
+    <string name="EnCours"> Scan en cours… </string>
+    <string name="TitleDevice"> Bienvenu sur l\'appareil !</string>
+    <string name="NombreInc"> Nombre:    </string>
+    <string name="LedShow"> Affichage des differentes LED :</string>
+    <string name="chargement"> Connection en cours… </string>
+    <string name="bleError"> Un problème est survenue lors de la connexion…</string>
+    <string name="loin"> Lointain </string>
+    <string name="proche"> Proche </string>
+    <string name="descriptionBlue">L\'application vous permet de vous connectez par bluetooth à d\'autres appareils ! </string>
+    <string name="descriptionRed"> Retrouvez les appareils avec leurs nom, adresse MAC et un indicateur de distance (rssi en dB) ! </string>
+    <string name="descriptionYellow"> Etablissez la connexion BLE avec l\'appareil choisi ! </string>
+    <string name="descriptionGreen"> Allumez/Eteignez les leds d\'une carte après connexion ! </string>
+
 
 </resources>

@@ -7,27 +7,174 @@
     tools:context=".ScanActivity">
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/titleActivityScan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/TitleScan"
+        android:textAlignment="center"
         android:textColor="@android:color/holo_blue_dark"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.092" />
+        app:layout_constraintVertical_bias="0.068" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="208dp"
+        android:layout_marginBottom="252dp"
+        android:backgroundTint="#0C92CF"
         android:text="@string/ButtonScanOn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textEnCours"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/EnCours"
+        android:textColor="@color/orange"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintVertical_bias="0.071"
+        tools:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/legendRed"
+        android:layout_width="52dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginBottom="120dp"
+        android:tint="@color/scarlet_red"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/circler" />
+
+    <TextView
+        android:id="@+id/textLegendL"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="-20dp"
+        android:text="@string/loin"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/legendRed"
+        app:layout_constraintVertical_bias="0.413" />
+
+    <ImageView
+        android:id="@+id/imageHome"
+        android:layout_width="67dp"
+        android:layout_height="68dp"
+        android:layout_marginBottom="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/homeicone" />
+
+    <ImageView
+        android:id="@+id/legendGreen"
+        android:layout_width="52dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginBottom="120dp"
+        android:tint="@color/green_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintStart_toEndOf="@+id/legendYellow"
+        app:srcCompat="@drawable/circler" />
+
+    <ImageView
+        android:id="@+id/legendYellow"
+        android:layout_width="52dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="120dp"
+        android:tint="@color/yellow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/legendOrange"
+        app:srcCompat="@drawable/circler" />
+
+    <ImageView
+        android:id="@+id/legendOrange"
+        android:layout_width="52dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="120dp"
+        android:tint="@color/orange"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/legendRed"
+        app:srcCompat="@drawable/circler" />
+
+    <TextView
+        android:id="@+id/textLegendP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-20dp"
+        android:layout_marginEnd="48dp"
+        android:text="@string/proche"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/legendGreen"
+        app:layout_constraintVertical_bias="0.413" />
+
+    <View
+        android:id="@+id/viewBar"
+        android:layout_width="170dp"
+        android:layout_height="3dp"
+        android:background="@color/platinium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textLegendP"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toEndOf="@+id/textLegendL"
+        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintVertical_bias="0.682" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="320dp"
+        android:layout_height="288dp"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleActivityScan"
+        app:layout_constraintVertical_bias="0.659" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="18dp"
+        android:layout_marginTop="8dp"
+        android:indeterminate="true"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleActivityScan"
+        tools:visibility="visible" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
