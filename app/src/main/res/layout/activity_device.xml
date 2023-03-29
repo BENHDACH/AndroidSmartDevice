@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DeviceActivity">
+
+    <TextView
+        android:id="@+id/titleDeviceActivity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/TitleDevice"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageLed2"
+        android:layout_width="99dp"
+        android:layout_height="101dp"
+        android:layout_marginStart="40dp"
+        android:tint="@color/black"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/numberText"
+        app:layout_constraintStart_toEndOf="@+id/imageLed1"
+        app:layout_constraintTop_toBottomOf="@+id/ledText"
+        app:layout_constraintVertical_bias="0.389"
+        app:srcCompat="@drawable/led"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/ledText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="@string/LedShow"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleDeviceActivity" />
+
+    <ImageView
+        android:id="@+id/imageLed1"
+        android:layout_width="99dp"
+        android:layout_height="101dp"
+        android:layout_marginStart="16dp"
+        android:tint="@color/black"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/numberText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ledText"
+        app:layout_constraintVertical_bias="0.389"
+        app:srcCompat="@drawable/led"
+        tools:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/imageLed3"
+        android:layout_width="99dp"
+        android:layout_height="101dp"
+        android:layout_marginStart="40dp"
+        android:tint="@color/black"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/numberText"
+        app:layout_constraintStart_toEndOf="@+id/imageLed2"
+        app:layout_constraintTop_toBottomOf="@+id/ledText"
+        app:layout_constraintVertical_bias="0.389"
+        app:srcCompat="@drawable/led"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/numberText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="300dp"
+        android:text="@string/NombreInc"
+        android:textSize="20sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.455"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/addressText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/ledText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleDeviceActivity" />
+
+    <ProgressBar
+        android:id="@+id/progressBar2"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addressText"
+        app:layout_constraintVertical_bias="0.113" />
+
+    <ImageView
+        android:id="@+id/imageBleError"
+        android:layout_width="164dp"
+        android:layout_height="174dp"
+        android:layout_marginBottom="352dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/bluetooth_icone" />
+
+    <ImageView
+        android:id="@+id/imageError"
+        android:layout_width="84dp"
+        android:layout_height="85dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/imageBleError"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/imageBleError"
+        app:layout_constraintTop_toTopOf="@+id/imageBleError"
+        app:srcCompat="@android:drawable/ic_delete" />
+
+    <ImageView
+        android:id="@+id/imageHomeOfDevice"
+        android:layout_width="109dp"
+        android:layout_height="96dp"
+        android:layout_marginBottom="136dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/homeicone" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

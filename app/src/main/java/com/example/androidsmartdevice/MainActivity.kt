@@ -3,7 +3,6 @@ package com.example.androidsmartdevice
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import com.example.androidsmartdevice.databinding.ActivityMainBinding
 
@@ -16,11 +15,10 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.bluetoothLogo.setBackgroundResource(R.drawable.bluetooth_icone)
-
+        //Lors du click buttonScan on passe à l'activité suivante (si plusieurs bouton j'en ferai une fonction)
         binding.buttonScan.setOnClickListener{
             val intent = Intent(this, ScanActivity::class.java)
-            Toast.makeText(this, "Lets Scan !", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "C'est parti !", Toast.LENGTH_LONG).show()
             startActivity(intent)
         }
 
