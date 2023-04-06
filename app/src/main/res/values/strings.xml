@@ -17,7 +17,7 @@
     <string name="descriptionBlue">L\'application vous permet de vous connectez par bluetooth à d\'autres appareils ! </string>
     <string name="descriptionRed"> Retrouvez les appareils avec leurs nom, adresse MAC et un indicateur de distance (rssi en dB) ! </string>
     <string name="descriptionYellow"> Etablissez la connexion BLE avec l\'appareil choisi ! </string>
-    <string name="descriptionGreen"> Allumez/Eteignez les leds d\'une carte après connexion ! (voir code deviceActivity ledClick()) </string>
+    <string name="descriptionGreen"> Allumez/Eteignez les leds d\'une carte après connexion ! </string>
 
 
 </resources>

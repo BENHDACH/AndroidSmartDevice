@@ -1,10 +1,10 @@
 Auteurs : Mohamed BENHDACH
-Date de la dernière version : 29/03/2023
+Date de la dernière version : 06/04/2023
 Github : https://github.com/BENHDACH/AndroidSmartDevice
 
 <\Ce projet consiste en une application pour établir une connection BLE vers un appareil.> 
 
-Note : Le readme à pour usage d'expliquer à l'utilisateur l'application et non d'expliquer le code, pour cela des commentaires sont disponnible dans le code.
+Note : Ce readme à pour usage d'expliquer à l'utilisateur l'application et non d'expliquer le code, pour cela des commentaires sont disponnible dans le code.
 
 --------------------Page d'accueil <\MainActivity>
 Cette page contient :
@@ -41,7 +41,7 @@ Cette page contient :
 => Si connexion établie : 
 * 3 image de LED et un message indiquant le nombre d'incrémentation apparaisent
 * Au clic sur une des LED, l'image devient jaune et le nombre d'incrémentation augmente de 1. Il est possible d'éteindre et allumer les   
-  image LED visuellement.
+  image LED visuellement et sur la carte STM32, cependant lorsqu'on éteint une led toute s'éteigne ((0x00) sur la valeur characteristic).
 
 
  --------------- Merci !!!

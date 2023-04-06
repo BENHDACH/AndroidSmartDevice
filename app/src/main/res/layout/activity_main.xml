@@ -149,14 +149,15 @@
 
     <TextView
         android:id="@+id/textBlue"
-        android:layout_width="160dp"
-        android:layout_height="67dp"
-        android:layout_marginBottom="40dp"
+        android:layout_width="161dp"
+        android:layout_height="73dp"
+        android:layout_marginBottom="32dp"
         android:text="@string/descriptionBlue"
         android:textAlignment="center"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/cadreBleu"
         app:layout_constraintEnd_toEndOf="@+id/cadreBleu"
+        app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintStart_toStartOf="@+id/cadreBleu" />
 
     <TextView
@@ -198,17 +199,6 @@
         app:layout_constraintStart_toStartOf="@+id/cadreVert" />
 
     <ImageView
-        android:id="@+id/notDoneIcone"
-        android:layout_width="26dp"
-        android:layout_height="25dp"
-        android:tint="#D85353"
-        app:layout_constraintBottom_toBottomOf="@+id/cadreVert"
-        app:layout_constraintEnd_toEndOf="@+id/cadreVert"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/cadreVert"
-        app:srcCompat="@android:drawable/ic_delete" />
-
-    <ImageView
         android:id="@+id/checkBlue"
         android:layout_width="27dp"
         android:layout_height="24dp"
@@ -226,6 +216,17 @@
         app:layout_constraintEnd_toEndOf="@+id/cadreJaune"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/cadreJaune"
+        app:srcCompat="@drawable/check" />
+
+    <ImageView
+        android:id="@+id/checkGreen"
+        android:layout_width="27dp"
+        android:layout_height="24dp"
+        android:tint="@android:color/holo_blue_dark"
+        app:layout_constraintBottom_toBottomOf="@+id/cadreVert"
+        app:layout_constraintEnd_toEndOf="@+id/cadreVert"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/cadreVert"
         app:srcCompat="@drawable/check" />
 
     <ImageView
