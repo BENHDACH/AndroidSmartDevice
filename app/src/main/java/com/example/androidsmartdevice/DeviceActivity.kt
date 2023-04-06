@@ -26,11 +26,19 @@ class DeviceActivity : AppCompatActivity() {
         bluetoothManager.adapter
     }
 
+    //Récupère parmis les 4 services (=> n°3)
+    private val serviceUUID = UUID.fromString("0000feed-cc7a-482a-984a-7f2ed5b3e58f")
+    //charactéristic du service 4 pour led
+    private val characteristicLedUUID = UUID.fromString("0000abcd-8e22-4541-9d4c-21edae82ed19")
+    //private val characteristicButtonUUID = UUID.fromString("00001234-8e22-4541-9d4c-21edae82ed19")
+
     @SuppressLint("MissingPermission")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDeviceBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
 
         //On recupère l'objet device cliquer précedement
         val recup = intent.getParcelableExtra<BluetoothDevice>("device")
@@ -42,7 +50,7 @@ class DeviceActivity : AppCompatActivity() {
 
         //On lance la connection
         bluetoothGatt = recup?.connectGatt(this, false, bluetoothGattCallback)
-        bluetoothGatt?.connect()
+        //bluetoothGatt?.connect()
         binding.ledText.text = getString(R.string.chargement)
 
         //On retourne au menu principale
@@ -79,43 +87,21 @@ class DeviceActivity : AppCompatActivity() {
     private fun ledClick(){
         var textNombre = ""
 
-        /** Je vous remercie d'avance de prendre en considération les exemples en /*...*/, j'aimerais ne pas devoir
-         passer de ratrapage du fait de ne pas avoir accès à une carte STM32. **/
-        /* ------ > Etoilé le code pour allumer/éteindre une led (non tester) : <----------
-        //Le TD parle d'un service numéro 3 mais je n'ai pas d'uuid donc "xxxxx")
-        val service =
-            bluetoothGatt!!.getService(UUID.fromString("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"))
-        //La characteristic pour pouvoir modifié la valeur dans la carte
-        val ledCharacteristic =
-            service.getCharacteristic(UUID.fromString("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"))
-        //On initialise les leds en éteinte (j'estime que 0 est éteint mais ce n'est peut être pas le cas)
-        val ledsValue = byteArrayOf(
-            0x00,
-            0x00,
-            0x00
-        )
-        ledCharacteristic.value = ledsValue
-        //On envoie la valeur initialiser.
-        bluetoothGatt!!.writeCharacteristic(ledCharacteristic)
-        */
-
         //Lors du click sur l'une des Led on incrémente le nombre
         binding.imageLed1.setOnClickListener{
+            val characteristic = bluetoothGatt?.getService(serviceUUID)?.getCharacteristic(characteristicLedUUID)
+
             if(ledStatus[0]){
                 binding.imageLed1.imageTintList = getColorStateList(R.color.black)
-                /*
-                ledsValue[0] = 0x00
-                ledCharacteristic.value = ledsValue
-                bluetoothGatt!!.writeCharacteristic(ledCharacteristic)
-                */
+                //Eteins tout malheuresement (je ne trouve pas comment éteindre 1 seul led)
+                characteristic?.value = byteArrayOf(0x00)
+                bluetoothGatt?.writeCharacteristic(characteristic)
 
             }else{
-                /*
-                //Je ne sais pas qu'elle valeur l'allume donc je vais mettre 1
-                ledsValue[0] = 0x01
-                ledCharacteristic.value = ledsValue
-                bluetoothGatt!!.writeCharacteristic(ledCharacteristic)
-                 */
+                //Allumage Led 1
+                characteristic?.value = byteArrayOf(0x01)
+                bluetoothGatt?.writeCharacteristic(characteristic)
+
                 countClick++
                 textNombre = "Nombre:   $countClick"
                 binding.numberText.text = textNombre
@@ -125,20 +111,16 @@ class DeviceActivity : AppCompatActivity() {
         }
 
         binding.imageLed2.setOnClickListener{
+            val characteristic = bluetoothGatt?.getService(serviceUUID)?.getCharacteristic(characteristicLedUUID)
+
             if(ledStatus[1]){
+                characteristic?.value = byteArrayOf(0x00)
+                bluetoothGatt?.writeCharacteristic(characteristic)
                 binding.imageLed2.imageTintList = getColorStateList(R.color.black)
-                /*
-                ledsValue[1] = 0x00
-                ledCharacteristic.value = ledsValue
-                bluetoothGatt!!.writeCharacteristic(ledCharacteristic)
-                 */
 
             }else{
-                /*
-                ledsValue[1] = 0x01
-                ledCharacteristic.value = ledsValue
-                bluetoothGatt!!.writeCharacteristic(ledCharacteristic)
-                 */
+                characteristic?.value = byteArrayOf(0x02)
+                bluetoothGatt?.writeCharacteristic(characteristic)
 
                 countClick++
                 textNombre = "Nombre:   $countClick"
@@ -149,20 +131,17 @@ class DeviceActivity : AppCompatActivity() {
         }
 
         binding.imageLed3.setOnClickListener{
+            val characteristic = bluetoothGatt?.getService(serviceUUID)?.getCharacteristic(characteristicLedUUID)
+
             if(ledStatus[2]){
+                characteristic?.value = byteArrayOf(0x00)
+                bluetoothGatt?.writeCharacteristic(characteristic)
                 binding.imageLed3.imageTintList = getColorStateList(R.color.black)
-                /*
-                ledsValue[2] = 0x00
-                ledCharacteristic.value = ledsValue
-                bluetoothGatt!!.writeCharacteristic(ledCharacteristic)
-                 */
 
             }else{
-                /*
-                ledsValue[2] = 0x01
-                ledCharacteristic.value = ledsValue
-                bluetoothGatt!!.writeCharacteristic(ledCharacteristic)
-                */
+                characteristic?.value = byteArrayOf(0x03)
+                bluetoothGatt?.writeCharacteristic(characteristic)
+
                 countClick++
                 textNombre = "Nombre:   $countClick"
                 binding.numberText.text = textNombre
@@ -174,61 +153,6 @@ class DeviceActivity : AppCompatActivity() {
 
     }
 
-    /* Le code permettant d'être notifié d'un changement pour les leds par exemple (voir aussi le callBack en bas)
-    fun setCharacteristicNotification(
-        characteristic: BluetoothGattCharacteristic,
-        enabled: Boolean
-    ) {
-        bluetoothGatt?.let { gatt ->
-            gatt.setCharacteristicNotification(characteristic, enabled)
-
-            // This is specific to Heart Rate Measurement.
-            if (BluetoothService.UUID_HEART_RATE_MEASUREMENT == characteristic.uuid) {
-                val descriptor = characteristic.getDescriptor(UUID.fromString(SampleGattAttributes.CLIENT_CHARACTERISTIC_CONFIG))
-                descriptor.value = BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE
-                gatt.writeDescriptor(descriptor)
-            }
-        } ?: run {
-            Log.w(BluetoothService.TAG, "BluetoothGatt not initialized")
-        }
-    }
-
-    private fun broadcastUpdate(action: String, characteristic: BluetoothGattCharacteristic) {
-        val intent = Intent(action)
-
-        // This is special handling for the Heart Rate Measurement profile. Data
-        // parsing is carried out as per profile specifications.
-        when (characteristic.uuid) {
-            UUID_HEART_RATE_MEASUREMENT -> {
-                val flag = characteristic.properties
-                val format = when (flag and 0x01) {
-                    0x01 -> {
-                        Log.d(TAG, "Heart rate format UINT16.")
-                        BluetoothGattCharacteristic.FORMAT_UINT16
-                    }
-                    else -> {
-                        Log.d(TAG, "Heart rate format UINT8.")
-                        BluetoothGattCharacteristic.FORMAT_UINT8
-                    }
-                }
-                val heartRate = characteristic.getIntValue(format, 1)
-                Log.d(TAG, String.format("Received heart rate: %d", heartRate))
-                intent.putExtra(EXTRA_DATA, (heartRate).toString())
-            }
-            else -> {
-                // For all other profiles, writes the data formatted in HEX.
-                val data: ByteArray? = characteristic.value
-                if (data?.isNotEmpty() == true) {
-                    val hexString: String = data.joinToString(separator = " ") {
-                        String.format("%02X", it)
-                    }
-                    intent.putExtra(EXTRA_DATA, "$data\n$hexString")
-                }
-            }
-        }
-        sendBroadcast(intent)
-    }
-     */
 
     @SuppressLint("MissingPermission")
     override fun onStop() {
@@ -237,7 +161,9 @@ class DeviceActivity : AppCompatActivity() {
         bluetoothGatt?.close()
     }
 
+
     private val bluetoothGattCallback = object : BluetoothGattCallback() {
+        @SuppressLint("MissingPermission")
         override fun onConnectionStateChange(gatt: BluetoothGatt?, status: Int, newState: Int) {
             if (newState == BluetoothProfile.STATE_CONNECTED) {
                 //Connection établie
@@ -245,6 +171,8 @@ class DeviceActivity : AppCompatActivity() {
                 runOnUiThread{
                     finChargement(true)
                 }
+                bluetoothGatt?.discoverServices()
+
             } else if (newState == BluetoothProfile.STATE_DISCONNECTED) {
                 // Echec de la connection
                 //Log.e("ConnErr","I am an Ero:or 404 :_|'{=2~>")
@@ -253,15 +181,5 @@ class DeviceActivity : AppCompatActivity() {
                 }
             }
         }
-        /*
-        override fun onCharacteristicChanged(
-            gatt: BluetoothGatt,
-            characteristic: BluetoothGattCharacteristic
-        ) {
-            broadcastUpdate(ACTION_DATA_AVAILABLE, characteristic)
-        }
-        */
-        /** Source pour la notifcation exemple : https://developer.android.com/guide/topics/connectivity/bluetooth/transfer-ble-data **/
-
     }
 }
